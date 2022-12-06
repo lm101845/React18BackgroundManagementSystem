@@ -21,12 +21,13 @@ function App() {
             {/*<CaretDownOutlined style={{fontSize: '40px', color: 'red'}}/>*/}
             {/*占位符组件，类似于窗口,用来展示组件的,有点像vue中的router-view*/}
 
-            <Link to="/home11">Home</Link>
-            <Link to="about11">About</Link>
+            {/*<Link to="/home">Home</Link>*/}
+            {/*<Link to="/about">About</Link>*/}
+            {/*<Link to="/user">User</Link>*/}
             {/*使用标签进行跳转*/}
 
             {/*<Outlet></Outlet>*/}
-            {/*第2种写法永不到Outlet,用的是useRoutes*/}
+            {/*第2种写法用不到Outlet,用的是useRoutes*/}
             {outlet}
         </div>
     )

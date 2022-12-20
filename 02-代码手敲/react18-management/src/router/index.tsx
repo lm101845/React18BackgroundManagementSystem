@@ -23,6 +23,7 @@ const User = lazy(()=>import("@/views/User"))
 import {Navigate} from 'react-router-dom'
 import Page1 from "@/views/Page1";
 import Page2 from "@/views/Page2";
+import Page301 from "@/views/page301";
 //Navigate重定向组件
 
 const withLoadingComponent = (comp:JSX.Element)=>(
@@ -49,9 +50,18 @@ const routes = [
                 path:'/page2',
                 element:withLoadingComponent(<Page2/>)
             },
+            {
+                path:'/page3/page301',
+                element:withLoadingComponent(<Page301/>)
+            },
         ]
-    }
+    },
     //嵌套路由 结束------------------------
+    //访问其余路径的时候直接跳转到首页
+    {
+        path:"*",
+        element: <Navigate to="/page1"/>
+    }
 
     //没有子路由的写法
     // {

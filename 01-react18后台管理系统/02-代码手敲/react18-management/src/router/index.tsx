@@ -4,16 +4,17 @@
  **/
 
 //路由懒加载
-import React,{lazy} from 'react'
+import React, {lazy} from 'react'
 
 //新的写法：对象形式的写法
 import App from '@/App'
 import Home from '@/views/Home'   //Home没有必要懒加载，进来就看到的是Home
 // import About from '@/views/About'
 // import User from '@/views/User'
+import Login from '@/views/Login'
+const About = lazy(() => import("@/views/About"))
+const User = lazy(() => import("@/views/User"))
 
-const About = lazy(()=>import("@/views/About"))
-const User = lazy(()=>import("@/views/User"))
 
 /**
  * 报错：A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator.
@@ -26,40 +27,45 @@ import Page2 from "@/views/Page2";
 import Page301 from "@/views/page301";
 //Navigate重定向组件
 
-const withLoadingComponent = (comp:JSX.Element)=>(
+const withLoadingComponent = (comp: JSX.Element) => (
     <React.Suspense fallback={<div>Loading...</div>}>
         {comp}
         {/*这里要加大括号，因为这个是活的*/}
     </React.Suspense>
 )
+
 const routes = [
     //嵌套路由 开始------------------------
     {
-        path:'/',
+        path: '/',
         element: <Navigate to="/page1"/>
     },
     {
-        path:'/',
+        path: '/',
         element: <Home/>,
         children: [
             {
-                path:'/page1',
-                element:withLoadingComponent(<Page1/>)
+                path: '/page1',
+                element: withLoadingComponent(<Page1/>)
             },
             {
-                path:'/page2',
-                element:withLoadingComponent(<Page2/>)
+                path: '/page2',
+                element: withLoadingComponent(<Page2/>)
             },
             {
-                path:'/page3/page301',
-                element:withLoadingComponent(<Page301/>)
+                path: '/page3/page301',
+                element: withLoadingComponent(<Page301/>)
             },
         ]
     },
     //嵌套路由 结束------------------------
     //访问其余路径的时候直接跳转到首页
     {
-        path:"*",
+        path:'/login',
+        element: <Login/>
+    },
+    {
+        path: "*",
         element: <Navigate to="/page1"/>
     }
 

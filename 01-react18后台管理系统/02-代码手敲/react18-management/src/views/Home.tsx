@@ -35,7 +35,7 @@ const View: React.FC = () => {
                     {/*窗口部分*/}
                     <Outlet/>
                 </Content>
-                <Footer style={{ textAlign: 'center',padding:0,lineHeight:'48px'}}>Ant Design ©2018 Created by Ant UED</Footer>
+                <Footer style={{ textAlign: 'center',padding:0,lineHeight:'48px'}}>后台管理系统底部</Footer>
             </Layout>
         </Layout>
     );
